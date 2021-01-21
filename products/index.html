@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Продукты</title>
+</head>
+<body>
+    <div id="app" v-on:submit="sendData">
+        <form id="form" action="#">
+            <p>Наименование товара:</p>
+            <input id="name" type="text">
+            <p>Колличество:</p>
+            <input id="count" type="text">
+            <p>Цена:</p>
+            <input id="price" type="text"><br><br>
+            <button>добавить</button>
+        </form>
+
+        <br>
+
+        <table>
+            <tr>
+                <th>Наименование товара</th>
+                <th>Колличество</th>
+                <th>Цена</th>
+                <th>Сумма</th>
+                <th></th>
+            </tr>
+            <tr v-for="product in products">
+                <td>{{product.name}}</td>
+                <td>{{product.count}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.sum}}</td>
+                <td><a href="#" v-on:click="deleteObject(product.id)">Удалить</a></td>
+            </tr>
+        </table>
+
+        <br>
+
+        <button v-on:click="sortTable">Сортировать</button>
+    </div>
+    <style>
+        table {
+            background: #f5e8d0; /* Цвет фона таблицы */
+            border-spacing: 0; /* Расстояние между ячеек */
+        }
+        th {
+            background: #496791; /* Цвет фона ячеек */
+            color: #fff; /* Цвет текста */
+        }
+        td, th {
+            padding: 5px 10px; /* Поля в ячейках */
+        }
+    </style>
+    <script src="script.js"></script>
+</body>
+</html>

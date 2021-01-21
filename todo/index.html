@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Чек-лист</title>
+</head>
+<body>
+    <div id="app">
+        <form id="form" action="#" @submit="addTask">
+            <p>Наименование задачи:</p>
+            <input type="text" id="task_name">
+            <button>Добавить</button>
+        </form>
+
+        <br>
+
+        <table>
+            <tr>
+                <th>Задачи</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr v-for="task in task_list">
+                <td @dblclick="doubleClick">{{task.name}}</td>
+                <td><input type="checkbox" @click="checkBox"></td>
+                <td><a href="#" @click="deleteObject(task.id)">Удалить</a></td>
+            </tr>
+        </table>
+    </div>
+    <style>
+        .checked {
+            color: gray;
+            text-decoration: line-through;
+        }
+        table {
+            background: #f5e8d0; /* Цвет фона таблицы */
+            border-spacing: 0; /* Расстояние между ячеек */
+        }
+        th {
+            background: #496791; /* Цвет фона ячеек */
+            color: #fff; /* Цвет текста */
+        }
+        td, th {
+            padding: 5px 10px; /* Поля в ячейках */
+        }
+    </style>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Тест</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Тест</h1>
+        <div class="block" v-for="question, index_m in question_list">
+            <p>{{question.header}}</p>
+            <ul>
+                <li v-for="i, index in question.answers"><input type="radio" :value="index + 1" :name="index_m"> {{question.answers[index]}}</li>
+            </ul>    
+        </div>
+        <button @click="checkAnswer">Завершить тест</button><br>
+        <h2>{{answer}}</h2>
+    </div>
+    <style>
+        p {
+            display: inline;
+        }
+        li {
+            list-style-type: none;
+        }
+
+        .correct {
+            border: 2px solid green;
+        }
+
+        .error {
+            border: 2px solid red;
+        }
+    </style>
+    <script src="script.js"></script>
+</body>
+</html>
